@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
+    <link
+      href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      h2,
+      h3 {
+        margin: 10px;
+        font-size: 18px;
+      }
+      h3 {
+        font-size: 16px;
+      }
+      p {
+        margin: 10px;
+      }
+      .map-overlay {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: #fff;
+        margin-right: 20px;
+        font-family: Arial, sans-serif;
+        overflow: auto;
+        border-radius: 3px;
+      }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+      #features {
+        top: 0;
+        height: 125px; 
+        margin-top: 20px;
+        width: 250px;
+      }
+      #legend {
+        padding: 10px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        line-height: 18px;
+        height: 160px;
+        margin-bottom: 40px;
+        width: 100px;
+      }
+      .legend-key {
+        display: inline-block;
+        border-radius: 20%;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div class="map-overlay" id="legend"></div>
+
+    <script>
+      // define access token
+      mapboxgl.accessToken = 'YOUR ACCESS TOKEN HERE'; // change this
+
+      // create map
+      const map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'YOUR MAP STYLE LINK HERE', // change this
+        center: [-75.154, 39.959], // change this
+        zoom: 11.17 // change this
+      });
+
+      // wait for map to load before adjusting it
+      map.on('load', () => {
+        // make a pointer cursor
+        map.getCanvas().style.cursor = 'default';
+
+        // define layer names
+        const layers = [
+          '0-10 mins',
+          '10-20 mins',
+          '20-30 mins',
+          '30-40 mins',
+          '40-50 mins',
+          '50-60 mins',
+          '60-70 mins',
+          '70-80 mins',
+          '80+ mins'
+        ]; // change this (to the values of your legend)
+        const colors = [
+          '#170ff0',
+          '#0ff0f0',
+          '#14a207',
+          '#17f00f',
+          '#f0d20f',
+          '#f0710f',
+          '#f00f0f',
+          '#b21010',
+          '#690707'
+        ]; // change this (to the colors of your legend)
+
+        // create legend
+        const legend = document.getElementById('legend');
+
+        layers.forEach((layer, i) => {
+          const color = colors[i];
+          const item = document.createElement('div');
+          const key = document.createElement('span');
+          key.className = 'legend-key';
+          key.style.backgroundColor = color;
+
+          const value = document.createElement('span');
+          value.innerHTML = `${layer}`;
+          item.appendChild(key);
+          item.appendChild(value);
+          legend.appendChild(item);
+        });
+      });
+    </script>
+  </body>
+</html>
