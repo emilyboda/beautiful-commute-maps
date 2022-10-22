@@ -140,8 +140,8 @@ if continue_question == 'y':
                     inpoints['features'][counter-1-(len(points_array)-row-1)]['properties']['address'] = distance_result['origin_addresses'][row]
                 elif results['status'] == 'ZERO_RESULTS':
                     print('no results')
-                    inpoints['features'][counter-1-(len(points_array)-row-1)]['properties']['distance'] = 10000.
-                    inpoints['features'][counter-1-(len(points_array)-row-1)]['properties']['duration'] = 10000.
+                    inpoints['features'][counter-1-(len(points_array)-row-1)]['properties']['distance'] = 180.
+                    inpoints['features'][counter-1-(len(points_array)-row-1)]['properties']['duration'] = 180.
                     inpoints['features'][counter-1-(len(points_array)-row-1)]['properties']['address'] = distance_result['origin_addresses'][row]
             points_array = []
             print('result ',counter, '/', len(inpoints['features']), 'at cost', counter*cost)
