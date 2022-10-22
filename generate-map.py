@@ -19,7 +19,7 @@ path_to_bounds = path_to_folder+"bounds.geojson"
 #   1.0 is recommended as min for driving
 #   0.5 is recommended as a max for bicycling
 #   0.2 is recommended as max for public transit
-resolution = 0.5 # miles between points
+resolution = 0.2 # miles between points
 
 # 4. Set the API key
 api_key = "INSERT YOUR API KEY HERE" 
@@ -35,7 +35,7 @@ transit_type = 'transit'
 # 7. Set your future communte date/time
 #   I usually use a future Monday at 9 am (that is not a holiday)
 #   You cannot use a past date so make sure to double check this
-set_arrival_time = datetime(2022,8,22,8,30)
+set_arrival_time = datetime(2022,12,12,8,30)
 
 # Other
 cost = 0.004
